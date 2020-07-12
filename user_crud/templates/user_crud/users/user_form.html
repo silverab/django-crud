@@ -1,0 +1,34 @@
+{% extends 'user_crud/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<form action="" method="post" autocomplete="off">
+	{% csrf_token %}
+	<div class="row">
+		<div class="col-md-6">
+			{{form.username|as_crispy_field }}		
+		</div>
+		<div class="col-md-6">
+			{{form.first_name|as_crispy_field }}
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			{{form.eductaion|as_crispy_field }}
+		</div>
+		<div class="col-md-6">
+			{{form.current_status|as_crispy_field }}
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			{{form.mobile|as_crispy_field }}
+		</div>
+		<div class="col-md-6">
+			{{form.city|as_crispy_field }}
+		</div>
+	</div>
+	<button type="submit" class="btn btn-success"><i class="fas fa-database"></i> Submit</button>
+	<a href="{% url 'list' %}" class="btn btn-outline-dark">All Records</a>
+</form>
+{% endblock content %}	  

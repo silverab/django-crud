@@ -1,0 +1,38 @@
+{% extends 'user_crud/base.html' %}
+
+{% block content %}
+<table class="table table-borderless">
+	<thead class="border-bottom font-weight-bold">
+		<tr>
+			<td>Username</td>
+			<td>First Name</td>
+			<td>Education</td>
+			<td>Status</td>
+			<td>City</td>
+			<td>Mobile</td>
+			<td>
+				<a href="{% url 'insert' %}" class="btn btn-outline-info"><i class="fas fa-plus"></i> New</a>
+			</td>
+		</tr>
+	</thead>
+	<tbody>
+		{% for users in user_list %}
+			<tr>
+				<td>{{users.username}}</td>
+				<td>{{users.first_name}}</td>
+				<td>{{users.eductaion}}</td>
+				<td>{{users.current_status}}</td>
+				<td>{{users.city}}</td>
+				<td>{{users.mobile}}</td>
+				<td>
+					<a href="{% url 'update' users.id %}" class="btn text-secondary px-0"><i class="far fa-edit"></i></a>
+					<form action="{% url 'delete' users.id %}" method="post" class="d-inline">
+						{% csrf_token %}
+						<button type="submit" class="btn text-danger"><i class="far fa-trash-alt"></i></button>
+					</form>
+				</td>
+			</tr>
+		{% endfor %}
+	</tbody>
+</table>
+{% endblock content %}	  
